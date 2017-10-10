@@ -851,6 +851,9 @@ public class UserGroupInformation {
       if (proxyUser == null) {
         proxyUser = System.getProperty(HADOOP_PROXY_USER);
       }
+      if (System.getenv("HOPSTF_USER") != null) {
+        proxyUser = System.getenv("HOPSTF_USER");
+      }
       loginUser = proxyUser == null ? realUser : createProxyUser(proxyUser, realUser);
 
       String fileLocation = System.getenv(HADOOP_TOKEN_FILE_LOCATION);
